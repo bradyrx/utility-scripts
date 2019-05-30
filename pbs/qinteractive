@@ -1,0 +1,1 @@
+qsub -I -l select=1:ncpus=4 -A p93300670 -l walltime=03:00:00 -q regular 
