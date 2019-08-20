@@ -15,7 +15,7 @@ without having to worry about ssh tunneling. The latter adds a nice dask dashboa
 can be dragged and dropped in your jupyter lab.
 
 Both will be installed in the analysis environment. After installing the analysis environment,
-run `source activate analysis` and then run `jupyter serverextension enable --py --sys-prefix dask_labextension`. **Note: This only needs to be run once.** It will install the dask dashboardon jupyter lab. 
+run `source activate analysis` and then run `jupyter labextension install dask-labextension`. **Note: This only needs to be run once.** It will install the dask dashboardon jupyter lab. 
 
 You can launch your jupyter lab instance (after connecting to a compute node and activating `analysis`) by using the utility scripts here. Reach out to me if your cluster isn't supported here.
 
