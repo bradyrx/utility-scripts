@@ -5,6 +5,8 @@
 
 echo "Which port to host notebook on? (8899, etc.)"
 read HOST_PORT
+#echo "Which port to host dask on? (8787, etc.)"
+#read DASK_PORT
 
 # Check if running on login nodes
 JNHOST=$(hostname)
@@ -117,9 +119,13 @@ JNDATA=$(python -c "import sys, json; d = json.load(sys.stdin); print($FIELDS)" 
 read PORT ADDRESS PWBOOL TOKEN <<< $JNDATA
 
 if [[ $JNHOST == ch* || $JNHOST == r* ]]; then
-    TUNNEL="ssh -N -l $USER -L ${HOST_PORT}:${JNHOST}:$PORT -L 8787:${JNHOST}:8787 cheyenne.ucar.edu"
+# without jupyter-server-proxy and dask-labextension
+#    TUNNEL="ssh -N -l $USER -L ${HOST_PORT}:${JNHOST}:$PORT -L ${DASK_PORT}:${JNHOST}:${DASK_PORT} cheyenne.ucar.edu"
+    TUNNEL="ssh -N -l $USER -L ${HOST_PORT}:${JNHOST}:$PORT cheyenne.ucar.edu"
 else
-    TUNNEL="ssh -N -l $USER -L ${HOST_PORT}:${JNHOST}:$PORT -L 8787:${JNHOST}:8787 ${JNHOST}.ucar.edu"
+# without jupyter-server-proxy and dask-labextension    
+#    TUNNEL="ssh -N -l $USER -L ${HOST_PORT}:${JNHOST}:$PORT -L ${DASK_PORT}:${JNHOST}:${DASK_PORT} ${JNHOST}.ucar.edu"
+    TUNNEL="ssh -N -l $USER -L ${HOST_PORT}:${JNHOST}:$PORT ${JNHOST}.ucar.edu"
 fi
 
 cat << EOF
