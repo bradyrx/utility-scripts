@@ -48,4 +48,6 @@ client = Client(cluster)
 client
 ```
 
-You should notice the dask dashboard light up on the lefthand side after executing the first cluster command. If it doesn't, execute through "client" and then copy and paste the server name (e.g., `/local/8787/`) into the dask dashboard at the top and click the magnifying glass.
+You should notice the dask dashboard light up on the lefthand side after executing the first cluster command. If it doesn't, execute through "client" and then copy and paste the server name (e.g., `/proxy/8787/`) into the dask dashboard at the top and click the magnifying glass.
+
+![](https://i.imgur.com/I2eHDBd.png)
