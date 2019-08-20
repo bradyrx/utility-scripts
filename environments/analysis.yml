@@ -1,0 +1,100 @@
+name: analysis
+channels:
+- conda-forge
+- nesii/label/dev-esmf
+- defaults
+dependencies:
+- python=3.7
+- pip
+# core pydata
+- bottleneck
+- dask
+- dask-mpi
+- dask-jobqueue 
+- distributed
+- eofs
+- metpy
+- numba
+- numpy
+- jupyterlab
+- pandas
+- scikit-image
+- scikit-learn
+- scipy
+- statsmodels
+- xarray>=0.12
+- cython
+# serialization
+- h5netcdf
+- h5py
+- netcdf4
+- numcodecs
+- rasterio
+- zarr
+# visualization
+- basemap
+- bokeh
+- cartopy
+- cmocean
+- datashader
+- geoviews
+- holoviews
+- hvplot
+- matplotlib
+- panel
+- seaborn
+# Misc
+- cf_units
+- cftime
+# analysis for initialized climate prediction
+- climpred
+- nc-time-axis
+- cytoolz
+- datashader
+- esmpy
+- fastparquet
+- geopandas
+- graphviz
+- gsw # https://teos-10.github.io/GSW-Python/install.html
+- intake
+- intake-xarray
+- ipykernel
+- ipywidgets
+# allows extensions without ssh tunneling
+- jupyter-server-proxy
+- lz4
+- memory_profiler
+- mpi4py
+- nc-time-axis
+- nodejs
+- nomkl
+- pandoc
+- pandocfilters
+- papermill
+- pint==0.8.1 # pin version: https://github.com/Unidata/MetPy/issues/998
+- psutil
+- pynio
+- pytest
+- python-blosc
+- python-graphviz
+- snakeviz
+- tabulate
+- toolz
+- tornado==5.1.1
+- tqdm
+- xesmf
+- git
+- pip:
+  # NCAR analysis package
+  - git+https://github.com/NCAR/esmlab-regrid.git
+  - git+https://github.com/NCAR/esmlab.git
+  # pop-specific utilities
+  - git+https://github.com/NCAR/pop-tools.git
+  #  dask jobqueue for NCAR clusters
+  - ncar-jobqueue
+  # dask dashboard for jupyter lab
+  - dask_labextension
+  # matplotlib wrapper for viz
+  - git+https://github.com/lukelbd/proplot.git#egg=proplot
+  # kitchen sink utilities for ESMs
+  - git+https://github.com/bradyrx/esm_analysis
