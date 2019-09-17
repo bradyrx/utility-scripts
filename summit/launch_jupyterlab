@@ -1,0 +1,24 @@
+#!/bin/bash
+# This tunnels a Jupyterlab server with the dask channel open (8787).
+#
+# Suggested packages:
+# * dask
+# * dask_jobqueue
+# * jupyter
+# * jupyterlab
+# * jupyter-server-proxy
+
+echo "Which port to host notebook on? (8899, etc.)"
+read HOST_PORT
+
+jupyter lab --ip=0.0.0.0 --port=${HOST_PORT} --no-browser &
+echo -e "\nStarting JupyterLab server, please wait ..."
+
+JNDATA=$(python -c "import sys, json; d = json.load(sys.stdin); print($FIELDS)" <<< $JNOUT)
+read PORT ADDRESS PWBOOL TOKEN <<< $JNDATA
+
+TUNNEL="ssh -N -l ${USER} -L ${HOST_PORT}:${HOSTNAME}:${HOST_PORT} -L 8787:${HOSTNAME}:8787 login.rc.colorado.edu"
+echo $TUNNEL
+
+# Wait for user kill command.
+sleep inf
